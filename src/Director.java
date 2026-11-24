@@ -3,12 +3,11 @@ public class Director extends Person {
     /*
         Для для режиссёра добавим поля имя, фамилия, пол и количество поставленных спектаклей (numberOfShows)
     */
-    Gender gender;
-    int numberOfShows;
+    private int numberOfShows;
 
     public Director(String name, String surname, Gender gender, int numberOfShows) {
-        super(name, surname);
-        this.gender = gender;
+        super(name, surname, gender);
+        this.setPersonGender(gender);
         this.numberOfShows = numberOfShows;
     }
 
@@ -20,7 +19,7 @@ public class Director extends Person {
     public String toString() {
         // Распечатать информацию о режиссёре спектакля — должны выводиться его имя и фамилия.
         String str = "Режиссер спектакля:";
-        str += name + " " + surname + "\n";
+        str += getPersonName() + " " + getPersonSurname() + "\n";
         // str += numberOfShows + "постановок\n";
         return str;
     }

@@ -32,8 +32,8 @@ public class Theatre {
         Director director_2 = new Director("Елена", "Воронцова", Gender.FEMALE, 19);
 
         // Также создайте одного автора музыки и одного хореографа
-        Person musicAuthor = new Person("Дмитрий", "Орлов");
-        Person choreographer = new Person("Марина", "Соколова");
+        Person musicAuthor = new Person("Дмитрий", "Орлов", Gender.MALE);
+        Person choreographer = new Person("Марина", "Соколова", Gender.FEMALE);
 
         // Либретто
         String librettoTextForOpera = "Это текст либретто для оперы.";
@@ -49,10 +49,10 @@ public class Theatre {
 
         // Распределить актёров по спектаклям. Используйте для этого метод добавления нового актёра в спектакль.
         // Один актёр может участвовать в нескольких спектаклях.
-        actor_1.addNewActor(show);
-        actor_2.addNewActor(show);
-        actor_3.addNewActor(opera);
-        actor_1.addNewActor(ballet);
+        show.addNewActor(actor_1);
+        show.addNewActor(actor_2);
+        opera.addNewActor(actor_3);
+        ballet.addNewActor(actor_1);
 
         // Для каждого спектакля выведите на экран список актёров.
         show.printListOfActors();
@@ -60,11 +60,11 @@ public class Theatre {
         ballet.printListOfActors();
 
         // Замените актёра в одном из спектаклей на актёра из другого спектакля и ещё раз выведите для него список актёров.
-        actor_1.replaceActor(ballet.listOfActors, actor_2.surname);
+        ballet.replaceActor(actor_2, actor_1.getPersonSurname());
         ballet.printListOfActors();
 
         // Попробуйте заменить в другом спектакле несуществующего актёра.
-        actor_1.replaceActor(ballet.listOfActors, actor_3.surname); // Выдаст сообщение: "Такого актера нет в спектакле"
+        opera.replaceActor(actor_1, actor_2.getPersonSurname()); // Выдаст сообщение: "Такого актера нет в спектакле"
 
         // Для оперного и балетного спектакля выведите на экран текст либретто.
         opera.printLibrettoText();
